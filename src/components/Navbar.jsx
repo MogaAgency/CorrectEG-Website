@@ -34,7 +34,7 @@ export default function Navbar() {
           <LanguageToggle />
           <ThemeToggle />
           <a
-            href="#contact"
+            href="tel:01200600700"
             className="inline-flex items-center rounded-full bg-brand px-5 py-2 text-sm font-semibold text-white hover:bg-brand-dark transition-colors"
           >
             {t.nav.cta}
