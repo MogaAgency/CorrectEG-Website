@@ -4,10 +4,11 @@
 export const whatsappNumber = '201200600700'
 
 export const socialLinks = [
-  { label: 'LinkedIn', icon: 'Linkedin', href: '#' },
-  { label: 'Instagram', icon: 'Instagram', href: '#' },
-  { label: 'Facebook', icon: 'Facebook', href: '#' },
-  { label: 'X', icon: 'X', href: '#' },
+  {
+    label: 'Facebook',
+    icon: 'Facebook',
+    href: 'https://www.facebook.com/share/1CahWRc4Pb/?mibextid=wwXIfr',
+  },
 ]
 
 // TODO: replace with real brand logos
