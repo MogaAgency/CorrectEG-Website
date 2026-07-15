@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import logo from '../assets/logo.svg'
+import logo from '../assets/logo.png'
 import { useLanguage } from '../i18n/LanguageContext'
 
 export default function Hero() {
@@ -26,7 +26,7 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
           src={logo}
           alt={t.hero.title}
-          className="h-16 w-16 mb-6"
+          className="h-56 w-auto mb-6"
         />
 
         <motion.h1
@@ -51,7 +51,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          href="#contact"
+          href="tel:01200600700"
           className="mt-8 inline-flex items-center rounded-full bg-brand px-7 py-3 text-base font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors"
         >
           {t.hero.cta}
