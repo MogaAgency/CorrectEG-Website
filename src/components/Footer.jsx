@@ -1,5 +1,5 @@
 import { Mail, Phone } from 'lucide-react'
-import logo from '../assets/logo.svg'
+import logo from '../assets/logo.png'
 import SocialIcon from './SocialIcon'
 import { socialLinks } from '../data/shared'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <img src={logo} alt="" className="h-8 w-8" />
+            <img src={logo} alt="" className="h-11 w-auto" />
             <span className="font-heading font-bold">
               {t.brand.part1} {t.brand.part2}
             </span>

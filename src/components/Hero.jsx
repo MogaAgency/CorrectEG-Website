@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import logo from '../assets/logo.svg'
+import logo from '../assets/logo.png'
 import { useLanguage } from '../i18n/LanguageContext'
 
 export default function Hero() {
@@ -26,7 +26,7 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
           src={logo}
           alt={t.hero.title}
-          className="h-16 w-16 mb-6"
+          className="h-56 w-auto mb-6"
         />
 
         <motion.h1
