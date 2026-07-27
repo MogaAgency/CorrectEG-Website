@@ -17,7 +17,7 @@ export default function About() {
           </p>
         </div>
 
-        <div data-reveal className="flex items-center justify-center">
+        <div data-reveal className="flex items-center justify-center md:justify-end ">
           <div className="relative flex h-64 w-64 items-center justify-center rounded-full bg-brand-tint dark:bg-white/5">
             <div className="absolute inset-4 rounded-full border-2 border-brand/20" />
             <LineChart className="h-24 w-24 text-brand" strokeWidth={1.5} />
