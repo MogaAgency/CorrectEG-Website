@@ -22,7 +22,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-medium text-body hover:text-brand transition-colors dark:text-gray-300"
+                className="text-sm font-bold text-body hover:text-brand transition-colors dark:text-gray-300"
               >
                 {link.label}
               </a>
@@ -63,7 +63,7 @@ export default function Navbar() {
               <a
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-md px-3 py-2 text-sm font-medium text-body hover:bg-brand-tint hover:text-brand dark:text-gray-300 dark:hover:bg-white/5"
+                className="block rounded-md px-3 py-2 text-sm font-bold text-body hover:bg-brand-tint hover:text-brand dark:text-gray-300 dark:hover:bg-white/5"
               >
                 {link.label}
               </a>
