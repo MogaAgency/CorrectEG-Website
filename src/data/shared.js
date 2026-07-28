@@ -9,6 +9,11 @@ export const socialLinks = [
     icon: 'Facebook',
     href: 'https://www.facebook.com/share/1CahWRc4Pb/?mibextid=wwXIfr',
   },
+  {
+    label: 'LinkedIn',
+    icon: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/correct-for-accounting-services/',
+  },
 ]
 
 // TODO: replace with real brand logos
