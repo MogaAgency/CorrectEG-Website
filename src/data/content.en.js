@@ -18,12 +18,12 @@ export default {
       { label: 'Clients', href: '#clients' },
       { label: 'Contact', href: '#contact' },
     ],
-    cta: 'Schedule a Zoom Meeting',
+    cta: 'Get a Free Consultation',
   },
   hero: {
     title: 'Correct For Accounting Service',
     subtitle: 'Your trusted partner in numbers.',
-    cta: 'Schedule a Zoom Meeting',
+    cta: 'Get a Free Consultation',
   },
   about: {
     title: 'Welcome to Correct For Accounting Service',
