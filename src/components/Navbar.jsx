@@ -11,7 +11,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-sm border-b border-black/5 dark:bg-[#0b0d10]/90 dark:border-white/10">
-      <nav className="max-w-7xl mx-auto flex items-center justify-around px-4 sm:px-6 h-16">
+      <nav className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16">
         <a href="#home" className="flex items-center gap-2 font-heading font-bold text-lg text-ink dark:text-white">
           <img src={logo} alt="" className="h-11 w-auto" />
           {t.brand.part1} <span className="text-brand">{t.brand.part2}</span>
