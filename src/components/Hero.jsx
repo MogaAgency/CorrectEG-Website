@@ -51,7 +51,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          href="https://scheduler.zoom.us/correct-team/correct" target="_blank" rel="noopener noreferrer"
+          href="tel:01200600700"
           className="mt-8 inline-flex items-center rounded-full bg-brand px-7 py-3 text-base font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors"
         >
           {t.hero.cta}
