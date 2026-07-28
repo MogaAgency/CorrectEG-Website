@@ -56,6 +56,16 @@ export default function Hero() {
         >
           {t.hero.cta}
         </motion.a>
+
+        <motion.a
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          href="#services"
+          className="mt-4 inline-flex items-center rounded-full border border-brand px-7 py-3 text-base font-semibold text-brand hover:bg-brand hover:text-white transition-colors"
+        >
+          {t.hero.servicesCta}
+        </motion.a>
       </div>
     </section>
   )

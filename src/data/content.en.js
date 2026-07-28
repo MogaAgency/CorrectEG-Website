@@ -6,7 +6,7 @@ export default {
   },
   brand: {
     part1: 'Correct',
-    part2: 'For Accounting',
+    part2: 'For Accounting Service',
   },
   nav: {
     links: [
@@ -24,6 +24,7 @@ export default {
     title: 'Correct For Accounting Service',
     subtitle: 'Your trusted partner in numbers.',
     cta: 'Get a Free Consultation',
+    servicesCta: 'View Our Services',
   },
   about: {
     title: 'Welcome to Correct For Accounting Service',
