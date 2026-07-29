@@ -17,11 +17,18 @@ export const socialLinks = [
 ]
 
 export const clientLogos = [
-  { file: 'logo1_cp.png', alt: 'For Gomla' },
-  { file: 'logo2_easymart.png', alt: 'Easy Mart' },
-  { file: 'logo3_almusky.png', alt: 'Al Musky' },
-  { file: 'logo4_nova.png', alt: 'Nova Investment' },
-  { file: 'logo5_ltarawy.png', alt: 'Eltarawy' },
-  { file: 'logo6_zoser.png', alt: 'Zoser' },
-  { file: 'logo7_croptech.png', alt: 'CropTech' },
+  { file: 'cp.jpg', alt: 'For Gomla' },
+  { file: 'easymart.jpg', alt: 'Easy Mart' },
+  { file: 'almusky.jpg', alt: 'Al Musky' },
+  { file: 'nova.jpg', alt: 'Nova Investment' },
+  { file: 'ltarawy.jpg', alt: 'Eltarawy' },
+  { file: 'zoser.jpg', alt: 'Zoser Pharma' },
+  { file: 'croptech.jpg', alt: 'CropTech' },
+  { file: 'homzy.jpg', alt: 'Homzy' },
+  { file: 'aes-petroserv.jpg', alt: 'AES PetroServ International Trading Co.' },
+  { file: 'pshift.jpg', alt: 'P*Shift' },
+  { file: 'elmasry-mob.jpg', alt: 'Elmasry Mob.' },
+  { file: 'farha-fone.jpg', alt: 'Farha Fone Mobile Store' },
+  { file: 'mido-mobile.jpg', alt: 'Mido Mobile' },
+  { file: 'partner.jpg', alt: 'Client partner' },
 ]

@@ -1,13 +1,13 @@
 import { clientLogos } from '../data/shared'
 import { useLanguage } from '../i18n/LanguageContext'
 
-const logoModules = import.meta.glob('../assets/logo*.png', {
+const logoModules = import.meta.glob('../assets/clients/*.jpg', {
   eager: true,
   import: 'default',
 })
 
 const logos = clientLogos.map(({ file, alt }) => ({
-  src: logoModules[`../assets/${file}`],
+  src: logoModules[`../assets/clients/${file}`],
   alt,
 }))
 
@@ -31,12 +31,12 @@ export default function Clients() {
           {[...logos, ...logos].map((logo, i) => (
             <div
               key={i}
-              className="mx-4 flex h-24 w-44 shrink-0 items-center justify-center rounded-xl bg-gray-100 dark:bg-white/5"
+              className="mx-4 flex h-24 w-44 shrink-0 items-center justify-center rounded-xl bg-white p-3 ring-1 ring-black/5 shadow-sm overflow-hidden"
             >
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className="max-h-16 max-w-[70%] object-contain"
+                className="h-full w-full object-contain"
               />
             </div>
           ))}
