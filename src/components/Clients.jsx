@@ -1,14 +1,15 @@
 import { clientLogos } from '../data/shared'
 import { useLanguage } from '../i18n/LanguageContext'
 
-const logoModules = import.meta.glob('../assets/clients/*.jpg', {
+const logoModules = import.meta.glob('../assets/clients/*.{jpg,png}', {
   eager: true,
   import: 'default',
 })
 
-const logos = clientLogos.map(({ file, alt }) => ({
+const logos = clientLogos.map(({ file, alt, needsBackdrop }) => ({
   src: logoModules[`../assets/clients/${file}`],
   alt,
+  needsBackdrop,
 }))
 
 export default function Clients() {
@@ -29,16 +30,26 @@ export default function Clients() {
         className="relative [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
       >
         <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
-          {[...logos, ...logos].map((logo, i) => (
+          {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
             <div
               key={i}
-              className="mx-4 flex h-24 w-44 shrink-0 items-center justify-center rounded-xl bg-white p-3 ring-1 ring-black/5 shadow-sm overflow-hidden"
+              className="mx-4 flex h-24 w-44 shrink-0 items-center justify-center rounded-xl p-2 shadow-sm overflow-hidden"
             >
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                className="h-full w-full object-contain"
-              />
+              {logo.needsBackdrop ? (
+                <div className="flex h-full w-full items-center justify-center rounded-md bg-white p-2">
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+              ) : (
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-full w-full object-contain"
+                />
+              )}
             </div>
           ))}
         </div>

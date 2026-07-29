@@ -7,7 +7,7 @@ export const socialLinks = [
   {
     label: 'Facebook',
     icon: 'Facebook',
-    href: 'https://www.facebook.com/share/1CahWRc4Pb/?mibextid=wwXIfr',
+    href: 'https://www.facebook.com/share/1CahWRc4Pb/',
   },
   {
     label: 'LinkedIn',
@@ -17,18 +17,17 @@ export const socialLinks = [
 ]
 
 export const clientLogos = [
-  { file: 'cp.jpg', alt: 'For Gomla' },
-  { file: 'easymart.jpg', alt: 'Easy Mart' },
-  { file: 'almusky.jpg', alt: 'Al Musky' },
-  { file: 'nova.jpg', alt: 'Nova Investment' },
-  { file: 'ltarawy.jpg', alt: 'Eltarawy' },
-  { file: 'zoser.jpg', alt: 'Zoser Pharma' },
-  { file: 'croptech.jpg', alt: 'CropTech' },
-  { file: 'homzy.jpg', alt: 'Homzy' },
-  { file: 'aes-petroserv.jpg', alt: 'AES PetroServ International Trading Co.' },
-  { file: 'pshift.jpg', alt: 'P*Shift' },
-  { file: 'elmasry-mob.jpg', alt: 'Elmasry Mob.' },
-  { file: 'farha-fone.jpg', alt: 'Farha Fone Mobile Store' },
-  { file: 'mido-mobile.jpg', alt: 'Mido Mobile' },
-  { file: 'partner.jpg', alt: 'Client partner' },
+  { file: 'cp.png', alt: 'For Gomla' },
+  // { file: 'easymart.png', alt: 'Easy Mart', needsBackdrop: true },
+  // { file: 'almusky.jpg', alt: 'Al Musky', needsBackdrop: true  },
+  // { file: 'nova.jpg', alt: 'Nova Investment', needsBackdrop: true  },
+  { file: 'ltarawy.png', alt: 'Eltarawy'  },
+  // { file: 'zoser.png', alt: 'Zoser Pharma', needsBackdrop: true },
+  { file: 'croptech.png', alt: 'CropTech'},
+  // { file: 'homzy.jpg', alt: 'Homzy', needsBackdrop: true  },
+  { file: 'aes-petroserv.png', alt: 'AES PetroServ International Trading Co.' },
+  // { file: 'p-shift.png', alt: 'P*Shift', needsBackdrop: true },
+  { file: 'elmasry-mob.jpg', alt: 'Elmasry Mob.'  },
+  // { file: 'mido-mobile.jpg', alt: 'Mido Mobile', needsBackdrop: true  },
+  { file: 'partner.png', alt: 'Client partner' },
 ]
