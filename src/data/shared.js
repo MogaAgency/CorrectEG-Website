@@ -16,5 +16,12 @@ export const socialLinks = [
   },
 ]
 
-// TODO: replace with real brand logos
-export const clientPlaceholders = Array.from({ length: 6 }, (_, i) => i + 1)
+export const clientLogos = [
+  { file: 'logo1_cp.png', alt: 'For Gomla' },
+  { file: 'logo2_easymart.png', alt: 'Easy Mart' },
+  { file: 'logo3_almusky.png', alt: 'Al Musky' },
+  { file: 'logo4_nova.png', alt: 'Nova Investment' },
+  { file: 'logo5_ltarawy.png', alt: 'Eltarawy' },
+  { file: 'logo6_zoser.png', alt: 'Zoser' },
+  { file: 'logo7_croptech.png', alt: 'CropTech' },
+]

@@ -120,7 +120,6 @@ export default {
   clients: {
     title: 'عملاؤنا',
     subtitle: 'شركات تثق بنا في إدارة أرقامها.',
-    logoLabel: 'شعار',
   },
   footer: {
     tagline: 'شريكك الموثوق في الأرقام.',

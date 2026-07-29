@@ -123,7 +123,6 @@ export default {
   clients: {
     title: 'Trusted By',
     subtitle: 'Businesses that rely on us for their numbers.',
-    logoLabel: 'Logo',
   },
   footer: {
     tagline: 'Your trusted partner in numbers.',
