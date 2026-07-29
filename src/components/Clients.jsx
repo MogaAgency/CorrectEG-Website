@@ -25,6 +25,7 @@ export default function Clients() {
 
       <div
         data-reveal
+        dir="ltr"
         className="relative [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
       >
         <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
