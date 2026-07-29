@@ -93,31 +93,30 @@ export default {
       },
     ],
   },
-  // TODO: replace with real client reviews
   reviews: {
     title: 'What Clients Say',
     subtitle: 'Real feedback from businesses we work with.',
     items: [
       {
-        name: 'Ahmed Youssef',
-        company: 'Nile Retail Group',
+        name: 'For Gomla',
+        company: '',
         quote:
-          'Correct For Accounting turned our messy books into a system we can finally trust. Reporting that used to take weeks now takes days.',
+          "It's crucial for your business to see its numbers the right way as it grows, and Correct is one of the best firms in financial auditing and consulting. From my experience, I highly recommend working with them — they truly understand numbers.",
         rating: 5,
       },
       {
-        name: 'Sara El-Masry',
-        company: 'BrightPath Logistics',
+        name: 'Nova Investment',
+        company: '',
         quote:
-          'Their audit team caught issues our previous accountant missed for years. Genuinely thorough and easy to work with.',
+          'We thank the company for providing every kind of support for the success of our financial system.',
         rating: 5,
       },
       {
-        name: 'Karim Adel',
-        company: 'Adel Manufacturing Co.',
+        name: 'Carnova',
+        company: '',
         quote:
-          'The ERP rollout was smooth and their team stayed hands-on through the whole transition. Highly recommended.',
-        rating: 4,
+          'A professional and trustworthy company that operates with the utmost accuracy and transparency, providing every kind of support for the success of the financial organization.',
+        rating: 5,
       },
     ],
   },
