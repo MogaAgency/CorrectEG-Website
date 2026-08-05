@@ -25,6 +25,8 @@ export default {
     subtitle: 'شريكك الموثوق في الأرقام.',
     cta: 'احصل على استشارة مجانية',
     servicesCta: 'تصفح خدماتنا',
+    teamBadgeValue: '+25',
+    teamBadgeLabel: 'فريق عمل',
   },
   about: {
     title: 'مرحبًا بك في كوركت لخدمات المحاسبة',

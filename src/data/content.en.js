@@ -25,6 +25,8 @@ export default {
     subtitle: 'Your trusted partner in numbers.',
     cta: 'Get a Free Consultation',
     servicesCta: 'View Our Services',
+    teamBadgeValue: '+25',
+    teamBadgeLabel: 'Team Members',
   },
   about: {
     title: 'Welcome to Correct For Accounting Service',
