@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import ThemeToggle from './ThemeToggle'
@@ -7,12 +7,26 @@ import logo from '../assets/logo.png'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const { t } = useLanguage()
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 0)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-sm border-b border-black/5 dark:bg-[#0b0d10]/90 dark:border-white/10">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/90 backdrop-blur-sm border-b border-black/5 dark:bg-[#0b0d10]/90 dark:border-white/10'
+          : 'bg-transparent backdrop-blur-0 border-b border-transparent'
+      }`}
+    >
       <nav className="max-w-7xl mx-auto flex items-center justify-around px-4 sm:px-6 h-16">
-        <a href="#home" className="flex items-center gap-2 font-heading font-bold text-lg text-ink dark:text-white">
+        <a href="#home" className="flex items-center gap-2 font-heading font-bold text-sm md:text-lg text-ink dark:text-white">
           <img src={logo} alt="" className="h-11 w-auto" />
           {t.brand.part1} <span className="text-brand">{t.brand.part2}</span>
         </a>
