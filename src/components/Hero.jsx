@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import logo from '../assets/logo.png'
 import { useLanguage } from '../i18n/LanguageContext'
+import ParticleBackground from './ParticleBackground'
 
 export default function Hero() {
   const { t } = useLanguage()
@@ -10,6 +11,8 @@ export default function Hero() {
       id="home"
       className="relative overflow-hidden bg-brand-tint dark:bg-[#111418] pt-32 pb-20 sm:pt-40 sm:pb-28"
     >
+      <ParticleBackground />
+
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-brand/10"
@@ -19,7 +22,7 @@ export default function Hero() {
         className="pointer-events-none absolute top-1/2 -left-20 h-56 w-56 rounded-full bg-brand/10"
       />
 
-      <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
+      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
         <motion.img
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
