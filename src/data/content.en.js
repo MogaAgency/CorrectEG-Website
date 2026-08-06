@@ -123,8 +123,10 @@ export default {
     ],
   },
   clients: {
-    title: 'Trusted By',
+    title: 'Clients',
     subtitle: 'Businesses that rely on us for their numbers.',
+    prevAria: 'Previous clients',
+    nextAria: 'Next clients',
   },
   footer: {
     tagline: 'Your trusted partner in numbers.',
