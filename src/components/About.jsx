@@ -5,7 +5,7 @@ export default function About() {
   const { t } = useLanguage()
 
   return (
-    <section id="about" className="py-20 sm:py-28 bg-white border-t border-black/5 dark:bg-[#0b0d10] dark:border-white/5">
+    <section id="about" className="py-40 sm:py-52 bg-white border-t border-black/5 dark:bg-[#0b0d10] dark:border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
         <div data-reveal>
           <h2 className="text-3xl font-bold mb-6">{t.about.title}</h2>

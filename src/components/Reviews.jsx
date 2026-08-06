@@ -10,7 +10,6 @@ export default function Reviews() {
         <div data-reveal className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl font-bold">{t.reviews.title}</h2>
           <p className="mt-3 text-body dark:text-gray-400">
-            {/* TODO: replace with real client reviews */}
             {t.reviews.subtitle}
           </p>
         </div>
