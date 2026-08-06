@@ -32,6 +32,12 @@ export default {
     title: 'Welcome to Correct For Accounting Service',
     body: "Elevate your business with our comprehensive bookkeeping solutions. From accurate record-keeping to strategic financial insights, we're dedicated to your financial success.",
     trusted: 'Your trusted partner in numbers.',
+    chart: {
+      title: 'Financial Growth Rate',
+      monthly: 'Monthly',
+      yearly: 'Yearly',
+      tooltipLabel: 'Profit',
+    },
   },
   services: {
     title: 'Our Services',
