@@ -18,7 +18,7 @@ export default {
       { label: 'Clients', href: '#clients' },
       { label: 'Contact', href: '#contact' },
     ],
-    cta: 'Get a Free Consultation',
+    cta: 'Schedule a Zoom Meeting',
   },
   hero: {
     title: 'Correct For Accounting Service',

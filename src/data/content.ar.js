@@ -18,7 +18,7 @@ export default {
       { label: 'عملاؤنا', href: '#clients' },
       { label: 'تواصل معنا', href: '#contact' },
     ],
-    cta: 'احصل على استشارة مجانية',
+    cta: 'احجز اجتماع زوم',
   },
   hero: {
     title: 'كوركت للخدمات المحاسبيه',
