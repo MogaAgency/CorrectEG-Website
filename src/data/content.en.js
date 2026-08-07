@@ -129,7 +129,7 @@ export default {
     ],
   },
   achievements: {
-    title: 'Our Milestones',
+    title: 'Our Achievements',
     items: [
       { value: 30, prefix: '+', suffix: '', label: 'Successful implementations' },
       { value: 10, prefix: '+', suffix: ' years', label: 'ERP Experience' },
