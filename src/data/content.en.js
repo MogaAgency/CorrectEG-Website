@@ -108,6 +108,8 @@ export default {
   reviews: {
     title: 'What Clients Say',
     subtitle: 'Real feedback from businesses we work with.',
+    prevAria: 'Previous testimonial',
+    nextAria: 'Next testimonial',
     items: [
       {
         name: 'For Gomla',

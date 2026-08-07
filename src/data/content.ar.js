@@ -106,6 +106,8 @@ export default {
   reviews: {
     title: 'آراء عملائنا',
     subtitle: 'آراء حقيقية من الشركات التي نتعامل معها.',
+    prevAria: 'الرأي السابق',
+    nextAria: 'الرأي التالي',
     items: [
       {
         name: 'For Gomla - فور جمله',
