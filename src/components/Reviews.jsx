@@ -192,7 +192,7 @@ export default function Reviews() {
             aria-label={t.reviews.prevAria}
             className="absolute start-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center rounded-full border border-black/10 bg-white/90 p-2.5 text-body shadow-sm transition-colors hover:border-brand hover:text-brand sm:flex dark:border-white/10 dark:bg-[#12161b]/90 dark:text-gray-300"
           >
-            <ChevronLeft size={20} />
+            {isRTL ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
           </button>
           <button
             type="button"
@@ -200,7 +200,7 @@ export default function Reviews() {
             aria-label={t.reviews.nextAria}
             className="absolute end-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center rounded-full border border-black/10 bg-white/90 p-2.5 text-body shadow-sm transition-colors hover:border-brand hover:text-brand sm:flex dark:border-white/10 dark:bg-[#12161b]/90 dark:text-gray-300"
           >
-            <ChevronRight size={20} />
+            {isRTL ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
           </button>
 
           <div className="mt-8 flex justify-center gap-2">
