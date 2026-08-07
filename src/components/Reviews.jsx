@@ -2,9 +2,24 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
+import cpLogo from '../assets/clients/cp.png'
+import novaLogo from '../assets/clients/nova.jpg'
 
 const SPACING = 68 // % of a card's own width each neighbor shifts by
 const SWIPE_THRESHOLD = 60 // px of drag before a swipe counts as prev/next
+
+// Reviewer -> company logo. Matched by a language-neutral prefix, since the
+// Arabic name field is formatted as "English name - Arabic name" while the
+// English field is just the English name — both start with the same key.
+// Reviewers with no logo on file fall back to an initials avatar below.
+const COMPANY_LOGOS = [
+  { match: 'For Gomla', src: cpLogo },
+  { match: 'Nova Investment', src: novaLogo },
+]
+
+function getCompanyLogo(name) {
+  return COMPANY_LOGOS.find((entry) => name.startsWith(entry.match))?.src
+}
 
 // Neighboring cards only peek on screens wide enough to show them
 // (Tailwind's `sm` breakpoint) — tracked in JS because Framer Motion's
@@ -52,6 +67,26 @@ function Stars({ rating }) {
         <Star key={i} size={16} fill={i < rating ? "#FFD700" : 'none'} stroke="#FFD700" strokeWidth={1.5} />
       ))}
     </div>
+  )
+}
+
+// Shows the company logo when one is on file, falling back to an initials
+// avatar so new reviewers work out of the box without needing an image.
+function ReviewerAvatar({ name }) {
+  const logo = getCompanyLogo(name)
+
+  if (logo) {
+    return (
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-transparent p-1.5">
+        <img src={logo} alt="" className="h-full w-full object-contain" />
+      </span>
+    )
+  }
+
+  return (
+    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand/10 text-sm font-bold text-brand">
+      {getInitials(name)}
+    </span>
   )
 }
 
@@ -135,9 +170,7 @@ export default function Reviews() {
                     </p>
 
                     <div className="mt-6 flex items-center gap-3">
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand/10 text-sm font-bold text-brand">
-                        {getInitials(review.name)}
-                      </span>
+                      <ReviewerAvatar name={review.name} />
                       <div>
                         <p className="text-sm font-semibold text-ink dark:text-white">
                           {review.name}
