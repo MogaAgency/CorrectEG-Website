@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import Achievements from './components/Achievements'
 import Services from './components/Services'
 import Ethics from './components/Ethics'
 import Reviews from './components/Reviews'
@@ -18,6 +19,7 @@ function App() {
       <main>
         <Hero />
         <About />
+        <Achievements />
         <Services />
         <Ethics />
         <Reviews />

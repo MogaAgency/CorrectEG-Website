@@ -6,6 +6,7 @@ import { useLanguage } from '../i18n/LanguageContext'
 // Column heights as a % of the chart's fixed height; the last bar is the
 // highlighted / highest one. Kept well under 100% so the pulse dot and
 // tooltip badge have headroom above it.
+
 const BARS_BY_PERIOD = {
   monthly: [38, 58, 34, 70, 46, 80],
   yearly: [22, 34, 48, 60, 74, 92],
