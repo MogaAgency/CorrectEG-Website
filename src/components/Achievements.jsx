@@ -56,7 +56,7 @@ export default function Achievements() {
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand">
                     <Icon className="h-6 w-6" strokeWidth={2} />
                   </span>
-                  <div className="text-4xl font-extrabold text-brand sm:text-5xl">
+                  <div className="text-4xl font-extrabold text-body dark:text-white sm:text-5xl">
                     <Counter value={item.value} prefix={item.prefix} suffix={item.suffix} />
                   </div>
                   <p className="text-sm font-semibold text-body dark:text-gray-400">
