@@ -125,6 +125,14 @@ export default {
       },
     ],
   },
+  achievements: {
+    title: 'إنجازاتنا',
+    items: [
+      { value: 30, prefix: '+', suffix: '', label: 'تطبيقات ناجحة' },
+      { value: 10, prefix: '+', suffix: ' سنوات', label: 'خبرة في أنظمة ERP' },
+      { value: 60, prefix: '+', suffix: '', label: 'شركة تمت خدمتها' },
+    ],
+  },
   clients: {
     title: 'عملاؤنا',
     subtitle: 'شركات تثق بنا في إدارة أرقامها.',

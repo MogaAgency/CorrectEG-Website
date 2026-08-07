@@ -128,6 +128,14 @@ export default {
       },
     ],
   },
+  achievements: {
+    title: 'Our Milestones',
+    items: [
+      { value: 30, prefix: '+', suffix: '', label: 'Successful implementations' },
+      { value: 10, prefix: '+', suffix: ' years', label: 'ERP Experience' },
+      { value: 60, prefix: '+', suffix: '', label: 'Companies served' },
+    ],
+  },
   clients: {
     title: 'Clients',
     subtitle: 'Businesses that rely on us for their numbers.',
