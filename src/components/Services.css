@@ -1,0 +1,280 @@
+/* =========================================================================
+   Services section — zig-zag process timeline + CTA banner
+   -------------------------------------------------------------------------
+   All colors, sizes and timings are exposed as CSS custom properties below.
+   To re-theme the whole section, edit only the values in :root / .dark —
+   nothing else in this file needs to change.
+   ========================================================================= */
+
+:root {
+  /* Colors (inherit the site's brand tokens by default) */
+  --services-accent: var(--color-brand, #1fa24a);
+  --services-accent-soft: color-mix(in srgb, var(--services-accent) 12%, transparent);
+  --services-node-bg: #ffffff;
+  --services-node-border: color-mix(in srgb, var(--services-accent) 30%, transparent);
+  --services-line-color: color-mix(in srgb, var(--services-accent) 45%, transparent);
+  --services-title-color: var(--color-ink, #1a1a1a);
+  --services-text-color: var(--color-body, #4b5563);
+  --services-banner-bg: #0b0d10;
+  --services-banner-text: #f5f5f5;
+  --services-banner-subtext: #9ca3af;
+
+  /* Sizing */
+  --services-node-size: 4rem;
+  --services-node-icon-size: 1.5rem;
+  --services-row-min-h: 220px;
+  --services-content-width: min(60%, 21rem);
+
+  /* Motion */
+  --services-reveal-duration: 700ms;
+  --services-reveal-stagger: 130ms;
+  --services-line-duration: 1400ms;
+}
+
+.dark {
+  --services-node-bg: #12161b;
+  --services-node-border: color-mix(in srgb, var(--services-accent) 40%, transparent);
+  --services-banner-bg: #000000;
+}
+
+/* -------------------------------------------------------------------------
+   Timeline layout
+   ------------------------------------------------------------------------- */
+
+.services-timeline {
+  position: relative;
+}
+
+.services-timeline__path {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.services-timeline__path-line {
+  fill: none;
+  stroke: var(--services-line-color);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--services-line-duration) ease;
+}
+
+.services-steps {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.services-step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: var(--services-row-min-h);
+}
+
+/* Node (icon circle) — alternates side per step, on top of the path.
+   Horizontal placement is intentionally NOT done via transform: translateX,
+   since on mobile `inset-inline-start` marks the node's actual edge (not a
+   center point). Transform here only ever handles vertical centering + the
+   reveal/hover scale; desktop's horizontal *centering* on the 25%/75% marks
+   is done with a negative margin instead (see the desktop media query). */
+.services-step__node {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--services-node-size);
+  height: var(--services-node-size);
+  border-radius: 999px;
+  background: var(--services-node-bg);
+  border: 2px solid var(--services-node-border);
+  color: var(--services-accent);
+  box-shadow: 0 8px 24px -8px color-mix(in srgb, var(--services-accent) 35%, transparent);
+  opacity: 0;
+  transform: translateY(-50%) scale(0.6);
+  transition:
+    opacity var(--services-reveal-duration) ease,
+    transform var(--services-reveal-duration) ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+  transition-delay: calc(var(--services-i, 0) * var(--services-reveal-stagger));
+}
+
+.services-step__node svg {
+  width: var(--services-node-icon-size);
+  height: var(--services-node-icon-size);
+}
+
+/* Subtle hover lift + glow on the node */
+.services-step__node:hover {
+  border-color: var(--services-accent);
+  box-shadow: 0 10px 28px -6px color-mix(in srgb, var(--services-accent) 55%, transparent);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.services-step.is-visible .services-step__node {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* Content (title + description) — sits opposite the node */
+.services-step__content {
+  width: var(--services-content-width);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity var(--services-reveal-duration) ease,
+    transform var(--services-reveal-duration) ease;
+  transition-delay: calc(var(--services-i, 0) * var(--services-reveal-stagger) + 100ms);
+}
+
+.services-step.is-visible .services-step__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.services-step__title {
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+  color: var(--services-title-color);
+}
+
+.services-step__desc {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--services-text-color);
+}
+
+/* Desktop zig-zag: node alternates 25% / 75%, content sits on the far side.
+   inset-inline-start marks the node's CENTER here, so it's pulled back by
+   half its own size via negative margin to land exactly on that point. */
+@media (min-width: 640px) {
+  .services-step:nth-child(odd) .services-step__node {
+    inset-inline-start: 25%;
+    margin-inline-start: calc(var(--services-node-size) / -2);
+  }
+  .services-step:nth-child(odd) .services-step__content {
+    margin-inline-start: auto;
+    text-align: start;
+  }
+
+  .services-step:nth-child(even) .services-step__node {
+    inset-inline-start: 75%;
+    margin-inline-start: calc(var(--services-node-size) / -2);
+  }
+  .services-step:nth-child(even) .services-step__content {
+    margin-inline-end: auto;
+    text-align: end;
+  }
+}
+
+/* Mobile: single-column timeline — node fixed to one side, content follows.
+   The offset/gap below are the only two numbers to tweak; content margin and
+   the connector line position are both derived from them via calc(), so they
+   can never drift out of sync with the node's actual size/position again. */
+@media (max-width: 639.98px) {
+  .services-timeline {
+    --services-node-size: 3rem;
+    --services-node-icon-size: 1.25rem;
+    --services-mobile-offset: 1.25rem; /* space from the edge to the node */
+    --services-mobile-gap: 1rem; /* space between the node and the content */
+  }
+
+  .services-timeline__path {
+    display: none;
+  }
+
+  .services-step__node {
+    inset-inline-start: var(--services-mobile-offset);
+  }
+
+  .services-step__content {
+    margin-inline-start: calc(
+      var(--services-mobile-offset) + var(--services-node-size) + var(--services-mobile-gap)
+    );
+    width: calc(
+      100% - var(--services-mobile-offset) - var(--services-node-size) - var(--services-mobile-gap)
+    );
+    text-align: start;
+  }
+
+  .services-mobile-line {
+    position: absolute;
+    inset-inline-start: calc(
+      var(--services-mobile-offset) + (var(--services-node-size) / 2) - 1px
+    );
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--services-line-color);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform var(--services-line-duration) ease;
+  }
+
+  .services-timeline.is-visible .services-mobile-line {
+    transform: scaleY(1);
+  }
+}
+
+@media (min-width: 640px) {
+  .services-mobile-line {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-step__node,
+  .services-step__content,
+  .services-timeline__path-line,
+  .services-mobile-line {
+    transition: none !important;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   CTA banner
+   ------------------------------------------------------------------------- */
+
+.services-banner {
+  border-radius: 1.5rem;
+  background: var(--services-banner-bg);
+  color: var(--services-banner-text);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.services-banner__text {
+  max-width: 40rem;
+  margin: 0 auto 1.5rem;
+  color: var(--services-banner-subtext);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.services-banner__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.75rem 1.75rem;
+  background: var(--services-accent);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.services-banner__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -8px color-mix(in srgb, var(--services-accent) 60%, transparent);
+}

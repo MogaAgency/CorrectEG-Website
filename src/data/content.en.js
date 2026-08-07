@@ -73,6 +73,10 @@ export default {
         icon: 'LineChart',
       },
     ],
+    banner: {
+      text: "Ready to streamline your financial operations? Let's build the right process for your business.",
+      cta: 'Get a Free Consultation',
+    },
   },
   // TODO: replace with real ethics copy
   ethics: {

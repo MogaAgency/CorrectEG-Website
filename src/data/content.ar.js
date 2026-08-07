@@ -71,6 +71,10 @@ export default {
         icon: 'LineChart',
       },
     ],
+    banner: {
+      text: 'مستعد لتبسيط عملياتك المالية؟ دعنا نبني معًا المسار الصحيح لعملك.',
+      cta: 'احصل على استشارة مجانية',
+    },
   },
   // TODO: replace with real ethics copy
   ethics: {

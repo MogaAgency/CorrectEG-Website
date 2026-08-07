@@ -1,5 +1,7 @@
-import { Boxes, BookOpenCheck, SearchCheck, Receipt, LineChart } from 'lucide-react'
+import { Boxes, BookOpenCheck, SearchCheck, Receipt, LineChart, ArrowUpRight } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
+import ServicesTimeline from './ServicesTimeline'
+import './Services.css'
 
 const icons = {
   Boxes,
@@ -10,7 +12,14 @@ const icons = {
 }
 
 export default function Services() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+
+  // Resolve each item's icon name to its component once, up front, so the
+  // timeline stays a plain presentational component.
+  const items = t.services.items.map((service) => ({
+    ...service,
+    icon: icons[service.icon],
+  }))
 
   return (
     <section id="services" className="py-20 sm:py-28 bg-brand-tint border-t border-black/5 dark:bg-[#111418] dark:border-white/5">
@@ -20,25 +29,19 @@ export default function Services() {
           <p className="mt-3 text-body dark:text-gray-400">{t.services.subtitle}</p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {t.services.items.map((service) => {
-            const Icon = icons[service.icon]
-            return (
-              <div
-                key={service.title}
-                data-reveal
-                className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 hover:shadow-md transition-shadow dark:bg-[#171b21] dark:ring-white/10"
-              >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand">
-                  <Icon size={24} strokeWidth={1.75} />
-                </div>
-                <h3 className="text-lg font-semibold text-ink dark:text-white">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-sm text-body dark:text-gray-400">{service.description}</p>
-              </div>
-            )
-          })}
+        <ServicesTimeline items={items} isRTL={language === 'ar'} />
+
+        <div data-reveal className="services-banner mt-16 sm:mt-20">
+          <p className="services-banner__text">{t.services.banner.text}</p>
+          <a
+            href="https://scheduler.zoom.us/correct-team/correct"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="services-banner__cta"
+          >
+            {t.services.banner.cta}
+            <ArrowUpRight size={18} strokeWidth={2.25} />
+          </a>
         </div>
       </div>
     </section>
