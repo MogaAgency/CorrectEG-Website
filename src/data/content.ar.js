@@ -122,6 +122,8 @@ export default {
   clients: {
     title: 'عملاؤنا',
     subtitle: 'شركات تثق بنا في إدارة أرقامها.',
+    prevAria: 'العملاء السابقون',
+    nextAria: 'العملاء التالون',
   },
   footer: {
     tagline: 'شريكك الموثوق في الأرقام.',
