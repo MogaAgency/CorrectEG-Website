@@ -49,7 +49,7 @@ function Stars({ rating }) {
   return (
     <div className="flex gap-1 text-brand">
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} size={16} fill={i < rating ? 'currentColor' : 'none'} strokeWidth={1.5} />
+        <Star key={i} size={16} fill={i < rating ? "#FFD700" : 'none'} stroke="#FFD700" strokeWidth={1.5} />
       ))}
     </div>
   )
