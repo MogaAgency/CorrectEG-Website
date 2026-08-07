@@ -31,7 +31,7 @@ export default function Services() {
 
         <ServicesTimeline items={items} isRTL={language === 'ar'} />
 
-        <div data-reveal className="services-banner mt-16 sm:mt-20">
+        <div data-reveal className="services-banner services-banner-bg mt-16 sm:mt-20">
           <p className="services-banner__text">{t.services.banner.text}</p>
           <a
             href="https://scheduler.zoom.us/correct-team/correct"
