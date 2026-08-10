@@ -37,8 +37,8 @@ export default function Hero() {
         {/* Side A — text content */}
         <div className="flex flex-col items-start text-start">
           <motion.img
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
             src={logo}
             alt={t.hero.title}
@@ -46,8 +46,8 @@ export default function Hero() {
           />
 
           <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-5xl font-bold tracking-tight"
           >
@@ -55,8 +55,8 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 text-lg text-body dark:text-gray-400"
           >
@@ -65,8 +65,8 @@ export default function Hero() {
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <motion.a
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               href="https://scheduler.zoom.us/correct-team/correct" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center rounded-full bg-brand px-7 py-3 text-base font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors"
@@ -75,8 +75,8 @@ export default function Hero() {
             </motion.a>
 
             <motion.a
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               href="#services"
               className="inline-flex items-center rounded-full border border-brand px-7 py-3 text-base font-semibold text-brand hover:bg-brand hover:text-white transition-colors"
@@ -116,8 +116,8 @@ export default function Hero() {
 
             {/* Team badge — opposite side to the overlay card, near the phone's lower half */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.85, y: 12 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.85, ease: 'easeOut' }}
               className="absolute z-20 bottom-[14%] start-0 sm:-start-6 flex items-center gap-2 rounded-full bg-[#0b0d10]/95 py-2 ps-2 pe-4 shadow-xl ring-1 ring-white/10 backdrop-blur-sm"
             >

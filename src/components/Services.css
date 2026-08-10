@@ -131,16 +131,12 @@
 .services-step__content {
   width: var(--services-content-width);
   opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity var(--services-reveal-duration) ease,
-    transform var(--services-reveal-duration) ease;
+  transition: opacity var(--services-reveal-duration) ease;
   transition-delay: calc(var(--services-i, 0) * var(--services-reveal-stagger) + 100ms);
 }
 
 .services-step.is-visible .services-step__content {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .services-step__title {
@@ -275,12 +271,9 @@
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  transition:
-    transform 200ms ease,
-    box-shadow 200ms ease;
+  transition: box-shadow 200ms ease;
 }
 
 .services-banner__cta:hover {
-  transform: translateY(-2px);
   box-shadow: 0 12px 28px -8px color-mix(in srgb, var(--services-accent) 60%, transparent);
 }

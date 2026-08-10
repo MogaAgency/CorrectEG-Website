@@ -125,18 +125,14 @@ export default function About() {
                   transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
                   className="absolute inset-0 rounded-full bg-brand/60"
                 />
-                <motion.span
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-                  className="relative flex"
-                >
+                <span className="relative flex">
                   <TrendingUp className="h-4 w-4" strokeWidth={2.5} />
-                </motion.span>
+                </span>
               </span>
               <motion.span
                 key={metrics.growth}
-                initial={{ opacity: 0, y: -6 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
                 className="text-xl font-extrabold text-brand"
               >
@@ -173,20 +169,16 @@ export default function About() {
                         <>
                           {/* Floating tooltip badge with exact figures */}
                           <motion.div
-                            initial={{ opacity: 0, y: 6 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
                             viewport={{ once: true, amount: 0.5 }}
                             transition={{ delay: 1, duration: 0.4 }}
                             style={{ bottom: `calc(${height}% + 18px)` }}
                             className="absolute end-0 z-20 whitespace-nowrap rounded-lg bg-[#0b0d10] px-2.5 py-1.5 text-[11px] font-semibold text-white shadow-lg transition-[bottom] duration-300 ease-out"
                           >
-                            <motion.span
-                              animate={{ y: [0, -3, 0] }}
-                              transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
-                              className="block"
-                            >
+                            <span className="block">
                               {t.about.chart.tooltipLabel}: {metrics.tooltipValue} | {metrics.tooltipPct}
-                            </motion.span>
+                            </span>
                             <span className="absolute end-3 top-full -mt-1 h-2 w-2 rotate-45 bg-[#0b0d10]" />
                           </motion.div>
 
@@ -217,7 +209,7 @@ export default function About() {
                       <motion.div
                         variants={barVariants}
                         style={{ height: `${height}%`, transformOrigin: 'bottom' }}
-                        className={`relative z-10 w-full rounded-t-lg transition-[height,transform] duration-300 ease-out hover:-translate-y-1 ${
+                        className={`relative z-10 w-full rounded-t-lg transition-[height,transform] duration-300 ease-out ${
                           isHighlight
                             ? 'bg-gradient-to-t from-brand to-emerald-400 shadow-[0_0_16px_rgba(31,162,74,0.55)]'
                             : 'bg-brand/25 hover:bg-brand/40 dark:bg-brand/20 dark:hover:bg-brand/35'
@@ -225,18 +217,14 @@ export default function About() {
                       />
 
                       {isHighlight ? (
-                        // Light sweep gliding up through the highlighted bar on a loop
-                        <div
+                        // Gentle breathing glow to keep the highlighted bar feeling alive
+                        <motion.div
                           aria-hidden="true"
+                          animate={{ opacity: [0.35, 0.7, 0.35] }}
+                          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
                           style={{ height: `${height}%` }}
-                          className="pointer-events-none absolute inset-x-0 bottom-0 z-10 overflow-hidden rounded-t-lg transition-[height] duration-300 ease-out"
-                        >
-                          <motion.div
-                            animate={{ y: ['120%', '-120%'] }}
-                            transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 1.6, ease: 'easeInOut' }}
-                            className="absolute inset-x-0 h-1/2 bg-gradient-to-b from-transparent via-white/50 to-transparent"
-                          />
-                        </div>
+                          className="pointer-events-none absolute inset-x-0 bottom-0 z-10 rounded-t-lg bg-white/40 transition-[height] duration-300 ease-out"
+                        />
                       ) : (
                         // Subtle staggered breathing pulse to keep the rest of the chart feeling alive
                         <motion.div

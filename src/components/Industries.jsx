@@ -46,11 +46,11 @@ export default function Industries() {
             return (
               <motion.div
                 key={item.label}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.55, delay: i * 0.08, ease: 'easeOut' }}
-                className="group relative overflow-hidden rounded-2xl border border-black/5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 dark:border-white/10"
+                className="group relative overflow-hidden rounded-2xl border border-black/5 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-black/10 dark:border-white/10"
               >
                 <div className="relative h-56 sm:h-60 overflow-hidden bg-brand-tint dark:bg-[#12161b]">
                   <motion.div

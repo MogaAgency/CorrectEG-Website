@@ -27,11 +27,11 @@ export default function HowWeWork() {
             return (
               <motion.div
                 key={step.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
-                className="group relative rounded-2xl border border-black/5 bg-white p-6 text-start transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-xl hover:shadow-black/5 dark:border-white/10 dark:bg-[#12161b] dark:hover:shadow-black/30"
+                className="group relative rounded-2xl border border-black/5 bg-white p-6 text-start transition-all duration-300 hover:border-brand/30 hover:shadow-xl hover:shadow-black/5 dark:border-white/10 dark:bg-[#12161b] dark:hover:shadow-black/30"
               >
                 <span className="absolute end-5 top-5 text-xs font-bold tracking-[0.2em] text-brand/40">
                   {String(i + 1).padStart(2, '0')}

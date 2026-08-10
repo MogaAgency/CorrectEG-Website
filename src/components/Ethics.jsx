@@ -168,11 +168,11 @@ export default function Ethics() {
             return (
               <motion.div
                 key={pillar.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
-                className="group rounded-2xl border border-black/5 bg-white p-7 text-start transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-xl hover:shadow-black/5 dark:border-white/10 dark:bg-[#12161b] dark:hover:shadow-black/30"
+                className="group rounded-2xl border border-black/5 bg-white p-7 text-start transition-all duration-300 hover:border-brand/30 hover:shadow-xl hover:shadow-black/5 dark:border-white/10 dark:bg-[#12161b] dark:hover:shadow-black/30"
               >
                 <span className="block text-xs font-bold tracking-[0.2em] text-brand/70">
                   {String(i + 1).padStart(2, '0')}

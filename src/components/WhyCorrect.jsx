@@ -26,11 +26,11 @@ export default function WhyCorrect() {
             return (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
-                className="flex items-start gap-5 rounded-2xl border border-black/5 bg-white p-6 text-start shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-xl hover:shadow-black/5 dark:border-white/10 dark:bg-[#12161b] dark:hover:shadow-black/30"
+                className="flex items-start gap-5 rounded-2xl border border-black/5 bg-white p-6 text-start shadow-sm transition-all duration-300 hover:border-brand/30 hover:shadow-xl hover:shadow-black/5 dark:border-white/10 dark:bg-[#12161b] dark:hover:shadow-black/30"
               >
                 <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand">
                   <Icon size={26} strokeWidth={1.75} />
