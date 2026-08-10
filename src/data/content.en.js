@@ -78,6 +78,73 @@ export default {
       cta: 'Get a Free Consultation',
     },
   },
+  howWeWork: {
+    title: 'How We Work',
+    subtitle:
+      'A structured process that turns financial complexity into clarity, from day one through go-live and beyond.',
+    items: [
+      {
+        title: 'Understand the Business and Its Needs',
+        description:
+          "We study the company's business model, operations, objectives, and challenges.",
+        icon: 'Search',
+      },
+      {
+        title: 'Assess the Current Situation',
+        description:
+          'We review existing data, procedures, and systems to identify gaps and priorities.',
+        icon: 'ClipboardList',
+      },
+      {
+        title: 'Design the Solution',
+        description:
+          "We define the scope, deliverables, and implementation plan in line with the company's needs and resources.",
+        icon: 'PenTool',
+      },
+      {
+        title: 'Implement and Review',
+        description:
+          'We put the solution into practice, review data and process quality, and track progress with the relevant team.',
+        icon: 'Settings2',
+      },
+      {
+        title: 'Report and Follow Up',
+        description:
+          'We deliver clear outputs and practical recommendations, then monitor results and refine the solution when needed.',
+        icon: 'FileCheck2',
+      },
+    ],
+  },
+  whyCorrect: {
+    title: 'Why Correct?',
+    subtitle: 'What sets our approach apart, engagement after engagement.',
+    items: [
+      {
+        title: 'Integrated Financial and Technical Expertise',
+        description:
+          'Our team brings more than 10 years of hands-on experience in accounting, financial management, and ERP implementation.',
+        icon: 'Layers',
+      },
+      {
+        title: 'A Deeper Understanding of Your Business',
+        description:
+          "We align every solution with the company's operations, industry, and stage of growth, making it practical and relevant to the actual need.",
+        icon: 'Compass',
+      },
+      {
+        title: 'Deliverables Built for Decision-Making',
+        description:
+          'We provide clear data, reports, and performance indicators that management can use to monitor results, plan ahead, and make informed decisions.',
+        icon: 'BarChart3',
+      },
+      {
+        title: 'Support Beyond Delivery',
+        description:
+          'We work alongside your team throughout implementation and go-live, then follow up on challenges and improvements.',
+        icon: 'LifeBuoy',
+      },
+    ],
+  },
   // TODO: replace with real ethics copy
   ethics: {
     title: 'Our Ethics',
@@ -140,6 +207,20 @@ export default {
       { value: 30, prefix: '+', suffix: '', label: 'Successful implementations' },
       { value: 10, prefix: '+', suffix: ' years', label: 'ERP Experience' },
       { value: 60, prefix: '+', suffix: '', label: 'Companies served' },
+    ],
+  },
+  industries: {
+    title: 'Industries We Serve',
+    subtitle:
+      'Financial and operational challenges vary from one industry to another, so we adapt our scope and delivery approach to fit each business.',
+    items: [
+      { label: 'E-commerce', icon: 'ShoppingCart' },
+      { label: 'Retail and Wholesale', icon: 'Store' },
+      { label: 'Professional Services', icon: 'Briefcase' },
+      { label: 'Service-Based Businesses', icon: 'Handshake' },
+      { label: 'Construction Companies', icon: 'Hammer' },
+      { label: 'Manufacturing Companies', icon: 'Factory' },
+      { label: 'Restaurants and Cafés', icon: 'UtensilsCrossed' },
     ],
   },
   clients: {
