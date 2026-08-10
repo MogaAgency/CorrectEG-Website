@@ -12,6 +12,23 @@ const icons = {
   UtensilsCrossed,
 }
 
+// Filenames mirror the English industry names, so keying by the (language
+// -neutral) lucide icon name lets both locales resolve the same photo.
+const imageModules = import.meta.glob('../assets/Industries We Serve/*.{jpg,jpeg,png}', {
+  eager: true,
+  import: 'default',
+})
+
+const images = {
+  ShoppingCart: imageModules['../assets/Industries We Serve/E-commerce.jpg'],
+  Store: imageModules['../assets/Industries We Serve/Retail and Wholesale.png'],
+  Briefcase: imageModules['../assets/Industries We Serve/Professional Services.jpeg'],
+  Handshake: imageModules['../assets/Industries We Serve/Service-Based Businesses.png'],
+  Hammer: imageModules['../assets/Industries We Serve/Construction Companies.png'],
+  Factory: imageModules['../assets/Industries We Serve/Manufacturing Companies.png'],
+  UtensilsCrossed: imageModules['../assets/Industries We Serve/Restaurants and Cafés.png'],
+}
+
 export default function Industries() {
   const { t } = useLanguage()
 
@@ -23,24 +40,46 @@ export default function Industries() {
           <p className="mt-3 text-body dark:text-gray-400">{t.industries.subtitle}</p>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {t.industries.items.map((item, i) => {
             const Icon = icons[item.icon]
             return (
               <motion.div
                 key={item.label}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.45, delay: i * 0.06, ease: 'easeOut' }}
-                className="flex flex-col items-center gap-3 rounded-2xl border border-black/5 bg-white px-4 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lg hover:shadow-black/5 dark:border-white/10 dark:bg-[#12161b] dark:hover:shadow-black/30"
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.55, delay: i * 0.08, ease: 'easeOut' }}
+                className="group relative overflow-hidden rounded-2xl border border-black/5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 dark:border-white/10"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand">
-                  <Icon size={22} strokeWidth={1.75} />
+                <div className="relative h-56 sm:h-60 overflow-hidden bg-brand-tint dark:bg-[#12161b]">
+                  <motion.div
+                    className="absolute inset-0"
+                    initial={{ scale: 1.18, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true, amount: 0.25 }}
+                    transition={{ duration: 0.9, delay: i * 0.08, ease: 'easeOut' }}
+                  >
+                    <img
+                      src={images[item.icon]}
+                      alt={item.label}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+                  </motion.div>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent transition-opacity duration-300 group-hover:from-black/90" />
+
+                  <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 p-5">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+                      <Icon size={18} strokeWidth={1.75} />
+                    </span>
+                    <div>
+                      <p className="text-base font-bold text-white">{item.label}</p>
+                      <span className="mt-1 block h-0.5 w-8 origin-start scale-x-0 rounded-full bg-brand transition-transform duration-300 group-hover:scale-x-100" />
+                    </div>
+                  </div>
                 </div>
-                <p className="text-sm font-semibold text-ink dark:text-white">
-                  {item.label}
-                </p>
               </motion.div>
             )
           })}
