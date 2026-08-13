@@ -7,6 +7,7 @@ import employee2 from '../assets/hero-section-images/employees/e2.jpeg'
 import employee3 from '../assets/hero-section-images/employees/e3.jpeg'
 import { useLanguage } from '../i18n/LanguageContext'
 import ParticleBackground from './ParticleBackground'
+import DownloadProfileButton from './DownloadProfileButton'
 
 const employeeAvatars = [employee1, employee2, employee3]
 
@@ -84,6 +85,15 @@ export default function Hero() {
               {t.hero.servicesCta}
             </motion.a>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-5"
+          >
+            <DownloadProfileButton />
+          </motion.div>
         </div>
 
         {/* Side B — mobile mockup + overlay card, grouped and layered */}

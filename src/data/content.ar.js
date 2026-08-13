@@ -340,6 +340,10 @@ export default {
     toDark: 'التبديل إلى الوضع الداكن',
     toLight: 'التبديل إلى الوضع الفاتح',
   },
+  downloadProfile: {
+    label: 'تحميل الملف التعريفي',
+    ariaLabel: 'تحميل الملف التعريفي للشركة (PDF)',
+  },
   languageToggle: {
     label: 'EN',
     ariaLabel: 'Switch to English',

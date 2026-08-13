@@ -353,6 +353,10 @@ export default {
     toDark: 'Switch to dark theme',
     toLight: 'Switch to light theme',
   },
+  downloadProfile: {
+    label: 'Download Company Profile',
+    ariaLabel: 'Download our company profile (PDF)',
+  },
   languageToggle: {
     label: 'AR',
     ariaLabel: 'Switch to Arabic',
