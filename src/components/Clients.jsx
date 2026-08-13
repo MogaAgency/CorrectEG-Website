@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { clientLogos } from '../data/shared'
 import { useLanguage } from '../i18n/LanguageContext'
+import { softReveal } from '../lib/motion'
 
 const CARD_GAP_PX = 20 // matches the track's gap-5
 const SET_REPEATS = 3 // logos rendered 3x so the track can wrap seamlessly in either direction
@@ -125,12 +127,12 @@ export default function Clients() {
       className="py-20 sm:py-28 bg-white border-t border-black/5 dark:bg-[#0b0d10] dark:border-white/5 overflow-hidden"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div data-reveal className="text-center max-w-2xl mx-auto mb-14">
+        <motion.div {...softReveal()} className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl font-bold">{t.clients.title}</h2>
           <p className="mt-3 text-body dark:text-gray-400">{t.clients.subtitle}</p>
-        </div>
+        </motion.div>
 
-        <div data-reveal dir="ltr" className="flex items-center gap-3 sm:gap-4">
+        <div dir="ltr" className="flex items-center gap-3 sm:gap-4">
           <button
             type="button"
             onClick={() => slide(-1)}

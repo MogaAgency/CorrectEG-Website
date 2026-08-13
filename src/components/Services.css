@@ -25,11 +25,6 @@
   --services-node-icon-size: 1.5rem;
   --services-row-min-h: 220px;
   --services-content-width: min(60%, 21rem);
-
-  /* Motion */
-  --services-reveal-duration: 700ms;
-  --services-reveal-stagger: 130ms;
-  --services-line-duration: 1400ms;
 }
 
 .dark {
@@ -64,7 +59,6 @@
   stroke: var(--services-line-color);
   stroke-width: 2;
   stroke-linecap: round;
-  transition: stroke-dashoffset var(--services-line-duration) ease;
 }
 
 .services-steps {
@@ -100,14 +94,10 @@
   border: 2px solid var(--services-node-border);
   color: var(--services-accent);
   box-shadow: 0 8px 24px -8px color-mix(in srgb, var(--services-accent) 35%, transparent);
-  opacity: 0;
-  transform: translateY(-50%) scale(0.6);
+  transform: translateY(-50%);
   transition:
-    opacity var(--services-reveal-duration) ease,
-    transform var(--services-reveal-duration) ease,
     border-color 200ms ease,
     box-shadow 200ms ease;
-  transition-delay: calc(var(--services-i, 0) * var(--services-reveal-stagger));
 }
 
 .services-step__node svg {
@@ -122,21 +112,9 @@
   transform: translateY(-50%) scale(1.08);
 }
 
-.services-step.is-visible .services-step__node {
-  opacity: 1;
-  transform: translateY(-50%) scale(1);
-}
-
 /* Content (title + description) — sits opposite the node */
 .services-step__content {
   width: var(--services-content-width);
-  opacity: 0;
-  transition: opacity var(--services-reveal-duration) ease;
-  transition-delay: calc(var(--services-i, 0) * var(--services-reveal-stagger) + 100ms);
-}
-
-.services-step.is-visible .services-step__content {
-  opacity: 1;
 }
 
 .services-step__title {
@@ -214,28 +192,12 @@
     bottom: 0;
     width: 2px;
     background: var(--services-line-color);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform var(--services-line-duration) ease;
-  }
-
-  .services-timeline.is-visible .services-mobile-line {
-    transform: scaleY(1);
   }
 }
 
 @media (min-width: 640px) {
   .services-mobile-line {
     display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .services-step__node,
-  .services-step__content,
-  .services-timeline__path-line,
-  .services-mobile-line {
-    transition: none !important;
   }
 }
 

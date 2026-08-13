@@ -2,6 +2,31 @@ import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { TrendingUp } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
+import { softReveal, SOFT_EASE } from '../lib/motion'
+
+// Chart card: fades/scales in like the rest of the site's soft-reveal
+// elements, then hands the same "visible" trigger down to its children
+// (staggerChildren/delayChildren) so the bars grow in right after.
+const chartCardVariants = {
+  hidden: { opacity: 0, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.7, ease: SOFT_EASE, staggerChildren: 0.08, delayChildren: 0.25 },
+  },
+}
+
+// Bars grow from their baseline, easing out softly — no bounce, no snap.
+const barVariants = {
+  hidden: { scaleY: 0, opacity: 0 },
+  visible: { scaleY: 1, opacity: 1, transition: { duration: 0.6, ease: SOFT_EASE } },
+}
+
+// Tooltip badge fades in just after its bar has grown, instead of popping in.
+const fadeVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.5, ease: SOFT_EASE } },
+}
 
 // Column heights as a % of the chart's fixed height; the last bar is the
 // highlighted / highest one. Kept well under 100% so the pulse dot and
@@ -21,22 +46,6 @@ const HIGHLIGHT_INDEX = BARS_BY_PERIOD.monthly.length - 1
 const GRIDLINE_ROWS = [0.22, 0.44, 0.66, 0.88]
 const MONTH_COUNT = 6
 const YEAR_COUNT = 6
-
-const chartVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.15 },
-  },
-}
-
-const barVariants = {
-  hidden: { scaleY: 0, opacity: 0 },
-  visible: {
-    scaleY: 1,
-    opacity: 1,
-    transition: { duration: 0.6, ease: 'easeOut' },
-  },
-}
 
 // Last N months ending with the current month, named in the active locale
 // (e.g. "Jan"…"Jun" or "يناير"…"يونيو").
@@ -74,7 +83,7 @@ export default function About() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
         {/* Rendered first in the DOM so the grid's direction-aware auto-placement
             puts it on the right in Arabic (RTL) and on the left in English (LTR). */}
-        <div data-reveal className="relative flex items-center justify-center md:justify-start">
+        <div className="relative flex items-center justify-center md:justify-start">
           <motion.div
             aria-hidden="true"
             animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
@@ -85,8 +94,8 @@ export default function About() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            variants={chartVariants}
+            viewport={{ once: true, amount: 0.2 }}
+            variants={chartCardVariants}
             className="relative w-full max-w-md rounded-2xl border border-black/5 bg-white p-6 shadow-xl dark:border-white/10 dark:bg-[#12161b]"
           >
             {/* Title + time-range filter chips */}
@@ -165,14 +174,21 @@ export default function About() {
                   const isHighlight = i === HIGHLIGHT_INDEX
                   return (
                     <div key={i} className="relative flex h-full flex-1 items-end">
+                      <motion.div
+                        variants={barVariants}
+                        style={{ height: `${height}%`, transformOrigin: 'bottom' }}
+                        className={`relative z-10 w-full rounded-t-lg transition-[height] duration-300 ease-out ${
+                          isHighlight
+                            ? 'bg-gradient-to-t from-brand to-emerald-400 shadow-[0_0_16px_rgba(31,162,74,0.55)]'
+                            : 'bg-brand/25 hover:bg-brand/40 dark:bg-brand/20 dark:hover:bg-brand/35'
+                        }`}
+                      />
+
                       {isHighlight && (
                         <>
-                          {/* Floating tooltip badge with exact figures */}
+                          {/* Floating tooltip badge with exact figures — fades in just as the bar finishes growing */}
                           <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true, amount: 0.5 }}
-                            transition={{ delay: 1, duration: 0.4 }}
+                            variants={fadeVariants}
                             style={{ bottom: `calc(${height}% + 18px)` }}
                             className="absolute end-0 z-20 whitespace-nowrap rounded-lg bg-[#0b0d10] px-2.5 py-1.5 text-[11px] font-semibold text-white shadow-lg transition-[bottom] duration-300 ease-out"
                           >
@@ -182,8 +198,11 @@ export default function About() {
                             <span className="absolute end-3 top-full -mt-1 h-2 w-2 rotate-45 bg-[#0b0d10]" />
                           </motion.div>
 
-                          {/* Pulsing indicator at the bar's tip */}
-                          <div
+                          {/* Pulsing indicator at the bar's tip — gated behind the same
+                              reveal as the tooltip, so the ring doesn't pulse in empty
+                              space before the bar has grown up to meet it. */}
+                          <motion.div
+                            variants={fadeVariants}
                             aria-hidden="true"
                             style={{ bottom: `${height}%` }}
                             className="absolute start-1/2 z-20 -translate-x-1/2 -translate-y-1/2 transition-[bottom] duration-300 ease-out"
@@ -194,46 +213,54 @@ export default function About() {
                               className="absolute inset-0 rounded-full bg-brand"
                             />
                             <span className="relative block h-2 w-2 rounded-full bg-brand shadow-[0_0_8px_rgba(31,162,74,0.9)]" />
-                          </div>
+                          </motion.div>
 
+                          {/* Blurred glow — same reveal gate, infinite breathing loop nested
+                              inside so it only starts once the bar is actually visible. */}
                           <motion.div
+                            variants={fadeVariants}
                             aria-hidden="true"
-                            animate={{ opacity: [0.35, 0.75, 0.35] }}
-                            transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
                             style={{ height: `${height}%` }}
-                            className="absolute inset-x-0 bottom-0 rounded-t-lg bg-brand blur-md transition-[height] duration-300 ease-out"
-                          />
+                            className="absolute inset-x-0 bottom-0 overflow-hidden rounded-t-lg transition-[height] duration-300 ease-out"
+                          >
+                            <motion.div
+                              animate={{ opacity: [0.35, 0.75, 0.35] }}
+                              transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+                              className="absolute inset-0 bg-brand blur-md"
+                            />
+                          </motion.div>
                         </>
                       )}
 
-                      <motion.div
-                        variants={barVariants}
-                        style={{ height: `${height}%`, transformOrigin: 'bottom' }}
-                        className={`relative z-10 w-full rounded-t-lg transition-[height,transform] duration-300 ease-out ${
-                          isHighlight
-                            ? 'bg-gradient-to-t from-brand to-emerald-400 shadow-[0_0_16px_rgba(31,162,74,0.55)]'
-                            : 'bg-brand/25 hover:bg-brand/40 dark:bg-brand/20 dark:hover:bg-brand/35'
-                        }`}
-                      />
-
                       {isHighlight ? (
-                        // Gentle breathing glow to keep the highlighted bar feeling alive
+                        // Gentle breathing glow to keep the highlighted bar feeling alive,
+                        // only once the bar itself has grown into view.
                         <motion.div
+                          variants={fadeVariants}
                           aria-hidden="true"
-                          animate={{ opacity: [0.35, 0.7, 0.35] }}
-                          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
                           style={{ height: `${height}%` }}
-                          className="pointer-events-none absolute inset-x-0 bottom-0 z-10 rounded-t-lg bg-white/40 transition-[height] duration-300 ease-out"
-                        />
+                          className="pointer-events-none absolute inset-x-0 bottom-0 z-10 overflow-hidden rounded-t-lg transition-[height] duration-300 ease-out"
+                        >
+                          <motion.div
+                            animate={{ opacity: [0.35, 0.7, 0.35] }}
+                            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+                            className="absolute inset-0 bg-white/40"
+                          />
+                        </motion.div>
                       ) : (
-                        // Subtle staggered breathing pulse to keep the rest of the chart feeling alive
+                        // Subtle staggered breathing pulse, same deal — waits for its bar.
                         <motion.div
+                          variants={fadeVariants}
                           aria-hidden="true"
-                          animate={{ opacity: [0.4, 0.85, 0.4] }}
-                          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.25 }}
                           style={{ height: `${height}%` }}
-                          className="pointer-events-none absolute inset-x-0 bottom-0 z-10 rounded-t-lg bg-white/30 transition-[height] duration-300 ease-out dark:bg-white/5"
-                        />
+                          className="pointer-events-none absolute inset-x-0 bottom-0 z-10 overflow-hidden rounded-t-lg transition-[height] duration-300 ease-out"
+                        >
+                          <motion.div
+                            animate={{ opacity: [0.4, 0.85, 0.4] }}
+                            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.25 }}
+                            className="absolute inset-0 bg-white/30 dark:bg-white/5"
+                          />
+                        </motion.div>
                       )}
                     </div>
                   )
@@ -255,7 +282,7 @@ export default function About() {
           </motion.div>
         </div>
 
-        <div data-reveal>
+        <motion.div {...softReveal(0.1)}>
           <h2 className="text-3xl font-bold mb-6">{t.about.title}</h2>
           <p className="text-lg leading-relaxed mb-4 dark:text-gray-400">
             {t.about.body}
@@ -263,7 +290,7 @@ export default function About() {
           <p className="text-lg font-semibold text-brand-dark dark:text-green-400">
             {t.about.trusted}
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

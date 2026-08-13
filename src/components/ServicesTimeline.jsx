@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
+import { softReveal } from '../lib/motion'
 
 /**
  * Builds a smooth zig-zag path through N points, one per step, alternating
@@ -22,62 +23,11 @@ function buildZigzagPath(stepCount) {
   }, `M ${points[0].x} ${points[0].y}`)
 }
 
-/** Observes each step + the container once, revealing them as they enter the viewport. */
-function useScrollReveal(stepCount) {
-  const containerRef = useRef(null)
-  const stepRefs = useRef([])
-  const [containerVisible, setContainerVisible] = useState(false)
-  const [visibleSteps, setVisibleSteps] = useState(() => new Set())
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced || !('IntersectionObserver' in window)) {
-      setContainerVisible(true)
-      setVisibleSteps(new Set(Array.from({ length: stepCount }, (_, i) => i)))
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return
-          if (entry.target === containerRef.current) {
-            setContainerVisible(true)
-          } else {
-            const index = Number(entry.target.dataset.stepIndex)
-            setVisibleSteps((prev) => new Set(prev).add(index))
-          }
-          observer.unobserve(entry.target)
-        })
-      },
-      { threshold: 0.2, rootMargin: '0px 0px -10% 0px' },
-    )
-
-    if (containerRef.current) observer.observe(containerRef.current)
-    stepRefs.current.forEach((el) => el && observer.observe(el))
-
-    return () => observer.disconnect()
-  }, [stepCount])
-
-  return { containerRef, stepRefs, containerVisible, visibleSteps }
-}
-
 export default function ServicesTimeline({ items, isRTL }) {
-  const { containerRef, stepRefs, containerVisible, visibleSteps } = useScrollReveal(items.length)
-  const pathRef = useRef(null)
-  const [pathLength, setPathLength] = useState(0)
-
-  useEffect(() => {
-    if (pathRef.current) setPathLength(pathRef.current.getTotalLength())
-  }, [items.length])
-
   const pathD = buildZigzagPath(items.length)
 
   return (
-    <div
-      ref={containerRef}
-      className={`services-timeline ${containerVisible ? 'is-visible' : ''}`}
-    >
+    <div className="services-timeline">
       {/* Desktop zig-zag connector (hidden on mobile via CSS) */}
       <svg
         aria-hidden="true"
@@ -86,15 +36,7 @@ export default function ServicesTimeline({ items, isRTL }) {
         preserveAspectRatio="none"
         style={{ transform: isRTL ? 'scaleX(-1)' : 'none' }}
       >
-        <path
-          ref={pathRef}
-          d={pathD}
-          className="services-timeline__path-line"
-          style={{
-            strokeDasharray: pathLength,
-            strokeDashoffset: containerVisible ? 0 : pathLength,
-          }}
-        />
+        <path d={pathD} className="services-timeline__path-line" />
       </svg>
 
       {/* Mobile straight connector (hidden on desktop via CSS) */}
@@ -104,13 +46,7 @@ export default function ServicesTimeline({ items, isRTL }) {
         {items.map((item, i) => {
           const Icon = item.icon
           return (
-            <div
-              key={item.title}
-              ref={(el) => (stepRefs.current[i] = el)}
-              data-step-index={i}
-              style={{ '--services-i': i }}
-              className={`services-step ${visibleSteps.has(i) ? 'is-visible' : ''}`}
-            >
+            <motion.div key={item.title} {...softReveal(i * 0.1)} className="services-step">
               <div className="services-step__node">
                 <Icon strokeWidth={1.75} />
               </div>
@@ -118,7 +54,7 @@ export default function ServicesTimeline({ items, isRTL }) {
                 <h3 className="services-step__title">{item.title}</h3>
                 <p className="services-step__desc">{item.description}</p>
               </div>
-            </div>
+            </motion.div>
           )
         })}
       </div>

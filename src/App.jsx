@@ -11,11 +11,8 @@ import Industries from './components/Industries'
 import Clients from './components/Clients'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
-import { useScrollReveal } from './hooks/useScrollReveal'
 
 function App() {
-  useScrollReveal()
-
   return (
     <>
       <Navbar />

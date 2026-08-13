@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ClipboardList, FileCheck2, PenTool, Search, Settings2 } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
+import { softReveal } from '../lib/motion'
 
 const icons = {
   Search,
@@ -16,10 +17,10 @@ export default function HowWeWork() {
   return (
     <section id="how-we-work" className="py-20 sm:py-28 bg-white border-t border-black/5 dark:bg-[#0b0d10] dark:border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div data-reveal className="text-center max-w-2xl mx-auto mb-14">
+        <motion.div {...softReveal()} className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl font-bold">{t.howWeWork.title}</h2>
           <p className="mt-3 text-body dark:text-gray-400">{t.howWeWork.subtitle}</p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {t.howWeWork.items.map((step, i) => {
@@ -27,10 +28,7 @@ export default function HowWeWork() {
             return (
               <motion.div
                 key={step.title}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
+                {...softReveal(i * 0.08)}
                 className="group relative rounded-2xl border border-black/5 bg-white p-6 text-start transition-all duration-300 hover:border-brand/30 hover:shadow-xl hover:shadow-black/5 dark:border-white/10 dark:bg-[#12161b] dark:hover:shadow-black/30"
               >
                 <span className="absolute end-5 top-5 text-xs font-bold tracking-[0.2em] text-brand/40">
