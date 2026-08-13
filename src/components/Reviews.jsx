@@ -204,7 +204,7 @@ export default function Reviews() {
             {isRTL ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
           </button>
 
-          <div className="mt-8 flex justify-center gap-2">
+          <div className="mt-8 flex flex-wrap justify-center gap-2">
             {items.map((review, i) => (
               <button
                 key={review.name}

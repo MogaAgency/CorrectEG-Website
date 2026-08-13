@@ -199,6 +199,115 @@ export default {
           'A professional and trustworthy company that operates with the utmost accuracy and transparency, providing every kind of support for the success of the financial organization.',
         rating: 5,
       },
+      {
+        name: 'MakramStores',
+        company: '',
+        quote:
+          "A message of appreciation and thanks to Correct for Accounting Services. A highly respected office that works with real professionalism and truly understands its craft. From Mr. Talaat Mostafa to every employee at the office, we hold nothing but respect and appreciation for their continuous efforts in developing the client's system — Correct is a true partner in success.",
+        rating: 5,
+      },
+      {
+        name: 'Mahmoud Khalil',
+        company: '',
+        quote:
+          'Professional, reliable, and highly responsive—an excellent accounting partner for any business.',
+        rating: 5,
+      },
+      {
+        name: 'Salma Elhalwany',
+        company: '',
+        quote:
+          'One of the best companies that genuinely helps every business set up a proper ERP system. Mr. Ayman and the team are extremely cooperative and always ready to help. 🙏',
+        rating: 5,
+      },
+      {
+        name: 'Hamada Elmasry',
+        company: '',
+        quote:
+          "One of the best and sharpest companies in account management. I've been with them for a year and a half — excellent, respectful service, and any issue I've had was resolved immediately. Wishing them continued success, with special thanks to Mr. Ayman and Mr. Mostafa. God bless you all. ❤️",
+        rating: 5,
+      },
+      {
+        name: 'Ahmed Mohsen',
+        company: '',
+        quote:
+          'One of the best companies to work with — fast, organized accounting, and a great experience from personal use.',
+        rating: 5,
+      },
+      {
+        name: 'Ahmed Zaitoun',
+        company: '',
+        quote: 'Honestly the best service and always available. Wishing them continued success and progress.',
+        rating: 5,
+      },
+      {
+        name: 'Ahmed Elmaghraby',
+        company: '',
+        quote: 'A partner you can rely on.',
+        rating: 5,
+      },
+      {
+        name: 'Farah Phone',
+        company: '',
+        quote:
+          "One of the most respectful people we've worked with. We've been working together for almost two years and have gained a lot from their work, experience, and way of thinking. Always committed, understanding, and delivering real value and a great experience. We highly recommend them to anyone who wants to work with a true professional.",
+        rating: 5,
+      },
+      {
+        name: 'Muhammad Ramzy',
+        company: '',
+        quote:
+          "From personal experience, a respectable company that genuinely cares about meeting clients' needs. Wishing them every success.",
+        rating: 5,
+      },
+      {
+        name: 'Alaa Abdelgawad',
+        company: '',
+        quote:
+          "One of the best places I've worked with, if not the best — in trustworthiness, professionalism, and the kind of sharp advice that always serves the business's best interest.",
+        rating: 5,
+      },
+      {
+        name: 'Mido Yossef',
+        company: '',
+        quote:
+          "A respectable company and trustworthy people. They've handled my accounts with honesty for years, giving attention to every detail, big or small.",
+        rating: 5,
+      },
+      {
+        name: 'Asma Alyami',
+        company: '',
+        quote:
+          "A professional company that helps you reach your strategic goals without getting held up by taxes or new government regulations. They understand problems quickly and act on the fastest solutions — hand them your financial file and focus on running your business. 👏",
+        rating: 5,
+      },
+      {
+        name: 'Mohammed El Okby',
+        company: '',
+        quote:
+          'A respectable company that knows its work well, keeps to its deadlines, and takes care of clients professionally.',
+        rating: 5,
+      },
+      {
+        name: 'Mohmed Atef',
+        company: '',
+        quote:
+          'Very respectful people, honest in how they deal with you — they treat your business as if it were their own, not just another client\'s. Punctual and reliable. I truly wish them continued success and was honored to work with them.',
+        rating: 5,
+      },
+      {
+        name: 'Hamza Khaled',
+        company: '',
+        quote: 'Honest and reliable — extremely respectful people.',
+        rating: 5,
+      },
+      {
+        name: 'Hatem Bahgat',
+        company: '',
+        quote:
+          'Over more than two years of working with Correct for Accounting Services, the impression has stayed consistent: professionalism, commitment, and precision in every detail. In a field built on trust above all else, it\'s been great finding a partner who values quality and commitment, and who always strives to deliver their best.',
+        rating: 5,
+      },
     ],
   },
   achievements: {
