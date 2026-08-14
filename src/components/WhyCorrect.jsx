@@ -1,14 +1,8 @@
 import { motion } from 'framer-motion'
-import { BarChart3, Compass, Layers, LifeBuoy } from 'lucide-react'
+import whyCorrectLight from '../assets/Why-Correct/why-correct-light.png'
+import whyCorrectDark from '../assets/Why-Correct/why-correct-dark.png'
 import { useLanguage } from '../i18n/LanguageContext'
 import { softReveal } from '../lib/motion'
-
-const icons = {
-  Layers,
-  Compass,
-  BarChart3,
-  LifeBuoy,
-}
 
 export default function WhyCorrect() {
   const { t } = useLanguage()
@@ -16,34 +10,47 @@ export default function WhyCorrect() {
   return (
     <section id="why-correct" className="py-20 sm:py-28 bg-brand-tint border-t border-black/5 dark:bg-[#111418] dark:border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div {...softReveal()} className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-3xl font-bold">{t.whyCorrect.title}</h2>
-          <p className="mt-3 text-body dark:text-gray-400">{t.whyCorrect.subtitle}</p>
-        </motion.div>
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 items-start">
+          {/* Heading + illustration — stays in view alongside the timeline on desktop */}
+          <div className="md:sticky md:top-32">
+            <motion.div {...softReveal()} className="text-start">
+              <h2 className="text-3xl sm:text-4xl font-bold">{t.whyCorrect.title}</h2>
+              <p className="mt-4 max-w-md text-body dark:text-gray-400">{t.whyCorrect.subtitle}</p>
+            </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {t.whyCorrect.items.map((item, i) => {
-            const Icon = icons[item.icon]
-            return (
-              <motion.div
-                key={item.title}
-                {...softReveal(i * 0.08)}
-                className="flex items-start gap-5 rounded-2xl border border-black/5 bg-white p-6 text-start shadow-sm transition-all duration-300 hover:border-brand/30 hover:shadow-xl hover:shadow-black/5 dark:border-white/10 dark:bg-[#12161b] dark:hover:shadow-black/30"
-              >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand">
-                  <Icon size={26} strokeWidth={1.75} />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-ink dark:text-white">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-body dark:text-gray-400">
-                    {item.description}
-                  </p>
-                </div>
-              </motion.div>
-            )
-          })}
+            {/* Separate light/dark artwork (swapped via CSS) so the line art's
+                stroke color stays legible against either theme's background. */}
+            <motion.div {...softReveal(0.1)} className="mt-8 max-w-sm">
+              <img src={whyCorrectLight} alt="" aria-hidden="true" className="h-auto w-full dark:hidden" />
+              <img src={whyCorrectDark} alt="" aria-hidden="true" className="hidden h-auto w-full dark:block" />
+            </motion.div>
+          </div>
+
+          {/* Numbered vertical timeline */}
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="absolute top-6 bottom-6 start-6 border-s-2 border-dashed border-brand/30 dark:border-brand/25"
+            />
+
+            <div className="space-y-10">
+              {t.whyCorrect.items.map((item, i) => (
+                <motion.div key={item.title} {...softReveal(i * 0.08)} className="flex gap-5">
+                  <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-brand/40 bg-brand-tint text-sm font-bold text-brand dark:border-brand/40 dark:bg-[#111418]">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="pt-1.5">
+                    <h3 className="text-lg font-bold text-ink dark:text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-body dark:text-gray-400">
+                      {item.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
