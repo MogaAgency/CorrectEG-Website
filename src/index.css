@@ -49,6 +49,22 @@ h4 {
   color: #f5f5f5;
 }
 
+/* Scroll-reveal: content is fully visible with zero JS. JS (see useScrollReveal)
+   is only ever allowed to ADD .reveal-hidden, never required to reveal content. */
+[data-reveal] {
+  transition: opacity 0.5s ease;
+}
+
+[data-reveal].reveal-hidden {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    transition: none;
+  }
+}
+
 .no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;

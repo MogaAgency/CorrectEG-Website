@@ -1,7 +1,5 @@
-import { motion } from 'framer-motion'
 import { Briefcase, Factory, Hammer, Handshake, ShoppingCart, Store, UtensilsCrossed } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
-import { softReveal } from '../lib/motion'
 
 const icons = {
   ShoppingCart,
@@ -36,18 +34,18 @@ export default function Industries() {
   return (
     <section id="industries" className="py-20 sm:py-28 bg-white border-t border-black/5 dark:bg-[#0b0d10] dark:border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div {...softReveal()} className="text-center max-w-2xl mx-auto mb-14">
+        <div data-reveal className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl font-bold">{t.industries.title}</h2>
           <p className="mt-3 text-body dark:text-gray-400">{t.industries.subtitle}</p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {t.industries.items.map((item, i) => {
+          {t.industries.items.map((item) => {
             const Icon = icons[item.icon]
             return (
-              <motion.div
+              <div
                 key={item.label}
-                {...softReveal(i * 0.08)}
+                data-reveal
                 className="group relative overflow-hidden rounded-2xl border border-black/5 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-black/10 dark:border-white/10"
               >
                 <div className="relative h-56 sm:h-60 overflow-hidden bg-brand-tint dark:bg-[#12161b]">
@@ -70,7 +68,7 @@ export default function Industries() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )
           })}
         </div>

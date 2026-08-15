@@ -1,14 +1,6 @@
-// Shared "soft reveal" preset: a gentle opacity + scale fade-in, triggered
-// once as an element scrolls into view. No vertical movement (by design —
-// translateY reveals read as jumpy on mobile). The eased curve and modest
-// scale delta keep it feeling soft rather than snappy.
+// Shared easing curve for the site's other (JS-driven) framer-motion reveals.
+// The scroll-into-view fade itself now lives in `useScrollReveal` +
+// `[data-reveal]` (see src/hooks/useScrollReveal.js, src/index.css) — a
+// plain IntersectionObserver + CSS transition, not framer-motion, because
+// the framer-motion `whileInView` version flickered on iOS Safari.
 export const SOFT_EASE = [0.16, 1, 0.3, 1]
-
-export function softReveal(delay = 0) {
-  return {
-    initial: { opacity: 0, scale: 0.97 },
-    whileInView: { opacity: 1, scale: 1 },
-    viewport: { once: true, amount: 0.2 },
-    transition: { duration: 0.7, delay, ease: SOFT_EASE },
-  }
-}

@@ -1,6 +1,3 @@
-import { motion } from 'framer-motion'
-import { softReveal } from '../lib/motion'
-
 /**
  * Builds a smooth zig-zag path through N points, one per step, alternating
  * between the 25% and 75% horizontal marks. Coordinate space is percentage
@@ -43,10 +40,10 @@ export default function ServicesTimeline({ items, isRTL }) {
       <div aria-hidden="true" className="services-mobile-line" />
 
       <div className="services-steps">
-        {items.map((item, i) => {
+        {items.map((item) => {
           const Icon = item.icon
           return (
-            <motion.div key={item.title} {...softReveal(i * 0.1)} className="services-step">
+            <div key={item.title} data-reveal className="services-step">
               <div className="services-step__node">
                 <Icon strokeWidth={1.75} />
               </div>
@@ -54,7 +51,7 @@ export default function ServicesTimeline({ items, isRTL }) {
                 <h3 className="services-step__title">{item.title}</h3>
                 <p className="services-step__desc">{item.description}</p>
               </div>
-            </motion.div>
+            </div>
           )
         })}
       </div>

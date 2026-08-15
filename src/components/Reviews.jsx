@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
-import { softReveal } from '../lib/motion'
 import cpLogo from '../assets/clients/cp.png'
 import novaLogo from '../assets/clients/nova.jpg'
 
@@ -111,10 +110,10 @@ export default function Reviews() {
   return (
     <section id="reviews" className="py-20 sm:py-28 bg-brand-tint border-t border-black/5 dark:bg-[#111418] dark:border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div {...softReveal()} className="text-center max-w-2xl mx-auto mb-14">
+        <div data-reveal className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl font-bold">{t.reviews.title}</h2>
           <p className="mt-3 text-body dark:text-gray-400">{t.reviews.subtitle}</p>
-        </motion.div>
+        </div>
 
         <div className="relative">
           <div className="relative h-[440px] sm:h-[400px] overflow-hidden">

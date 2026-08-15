@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { TrendingUp } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
-import { softReveal, SOFT_EASE } from '../lib/motion'
+import { SOFT_EASE } from '../lib/motion'
 
 // Chart card: fades/scales in like the rest of the site's soft-reveal
 // elements, then hands the same "visible" trigger down to its children
@@ -282,7 +282,7 @@ export default function About() {
           </motion.div>
         </div>
 
-        <motion.div {...softReveal(0.1)}>
+        <div data-reveal>
           <h2 className="text-3xl font-bold mb-6">{t.about.title}</h2>
           <p className="text-lg leading-relaxed mb-4 dark:text-gray-400">
             {t.about.body}
@@ -290,7 +290,7 @@ export default function About() {
           <p className="text-lg font-semibold text-brand-dark dark:text-green-400">
             {t.about.trusted}
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

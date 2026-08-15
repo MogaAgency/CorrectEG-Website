@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import { animate, motion, useInView, useMotionValue, useTransform } from 'framer-motion'
 import { Building2, Clock, Rocket } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
-import { softReveal } from '../lib/motion'
 import ParticleBackground from './ParticleBackground'
 
 const icons = [Rocket, Clock, Building2]
@@ -28,12 +27,12 @@ export default function Achievements() {
   return (
     <section className="py-20 sm:py-28 bg-white border-t border-black/5 dark:bg-[#0b0d10] dark:border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div {...softReveal()} className="text-center max-w-2xl mx-auto mb-14">
+        <div data-reveal className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl font-bold">{t.achievements.title}</h2>
-        </motion.div>
+        </div>
 
-        <motion.div
-          {...softReveal(0.1)}
+        <div
+          data-reveal
           className="relative overflow-hidden rounded-3xl border border-black/5 bg-gradient-to-b from-brand-tint via-brand-tint to-white shadow-xl dark:border-white/10 dark:from-[#0d1013] dark:via-[#111418] dark:to-[#0b0d10]"
         >
           <ParticleBackground />
@@ -67,7 +66,7 @@ export default function Achievements() {
               )
             })}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
