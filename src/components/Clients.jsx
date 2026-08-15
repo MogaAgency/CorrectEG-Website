@@ -156,7 +156,7 @@ export default function Clients() {
                 <div
                   key={`${logo.alt}-${i}`}
                   ref={(el) => (cardRefs.current[i] = el)}
-                  className={`flex h-28 w-[85%] sm:w-[calc(50%-10px)] md:w-[calc(33.333%-13.33px)] lg:w-[calc(20%-16px)] shrink-0 snap-center items-center justify-center rounded-2xl border-2 border-gray-200 bg-white p-4 transition-all duration-300 hover:border-brand dark:border-white/10 dark:bg-[#12161b]`}
+                  className={`flex h-28 w-[calc(50%-10px)] md:w-[calc(33.333%-13.33px)] lg:w-[calc(20%-16px)] shrink-0 snap-center items-center justify-center rounded-2xl border-2 border-gray-200 bg-white p-4 transition-all duration-300 hover:border-brand dark:border-white/10 dark:bg-[#12161b]`}
                 >
                   {logo.needsBackdrop ? (
                     <div className="flex h-full w-full items-center justify-center rounded-md bg-white p-2">
