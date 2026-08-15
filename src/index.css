@@ -76,3 +76,12 @@ h4 {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* The "analyze" storyset illustration is inlined (not <img>) so these can
+   reach inside it: its floor/shadow ellipses default to their original
+   near-white artwork colors, darkened here so it reads on a dark section
+   background instead of needing a permanent white card behind it. */
+.dark #freepik_stories-analyze {
+  --wc-floor: #181c21;
+  --wc-shadow: #121519;
+}
