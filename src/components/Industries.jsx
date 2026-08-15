@@ -40,12 +40,13 @@ export default function Industries() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {t.industries.items.map((item) => {
+          {t.industries.items.map((item, i) => {
             const Icon = icons[item.icon]
             return (
               <div
                 key={item.label}
                 data-reveal
+                style={{ transitionDelay: `${i * 80}ms` }}
                 className="group relative overflow-hidden rounded-2xl border border-black/5 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-black/10 dark:border-white/10"
               >
                 <div className="relative h-56 sm:h-60 overflow-hidden bg-brand-tint dark:bg-[#12161b]">

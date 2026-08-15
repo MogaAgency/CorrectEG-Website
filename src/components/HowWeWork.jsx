@@ -27,6 +27,7 @@ export default function HowWeWork() {
               <div
                 key={step.title}
                 data-reveal
+                style={{ transitionDelay: `${i * 80}ms` }}
                 className="group relative rounded-2xl border border-black/5 bg-white p-6 text-start transition-all duration-300 hover:border-brand/30 hover:shadow-xl hover:shadow-black/5 dark:border-white/10 dark:bg-[#12161b] dark:hover:shadow-black/30"
               >
                 <span className="absolute end-5 top-5 text-xs font-bold tracking-[0.2em] text-brand/40">

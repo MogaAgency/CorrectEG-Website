@@ -40,10 +40,15 @@ export default function ServicesTimeline({ items, isRTL }) {
       <div aria-hidden="true" className="services-mobile-line" />
 
       <div className="services-steps">
-        {items.map((item) => {
+        {items.map((item, i) => {
           const Icon = item.icon
           return (
-            <div key={item.title} data-reveal className="services-step">
+            <div
+              key={item.title}
+              data-reveal
+              style={{ transitionDelay: `${i * 80}ms` }}
+              className="services-step"
+            >
               <div className="services-step__node">
                 <Icon strokeWidth={1.75} />
               </div>

@@ -33,7 +33,12 @@ export default function WhyCorrect() {
 
             <div className="space-y-10">
               {t.whyCorrect.items.map((item, i) => (
-                <div key={item.title} data-reveal className="flex gap-5">
+                <div
+                  key={item.title}
+                  data-reveal
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                  className="flex gap-5"
+                >
                   <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-brand/40 bg-brand-tint text-sm font-bold text-brand dark:border-brand/40 dark:bg-[#111418]">
                     {String(i + 1).padStart(2, '0')}
                   </span>

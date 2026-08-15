@@ -88,6 +88,7 @@ export default function Ethics() {
               <div
                 key={pillar.title}
                 data-reveal
+                style={{ transitionDelay: `${i * 80}ms` }}
                 className="group rounded-2xl border border-black/5 bg-white p-7 text-start transition-all duration-300 hover:border-brand/30 hover:shadow-xl hover:shadow-black/5 dark:border-white/10 dark:bg-[#12161b] dark:hover:shadow-black/30"
               >
                 <span className="block text-xs font-bold tracking-[0.2em] text-brand/70">
