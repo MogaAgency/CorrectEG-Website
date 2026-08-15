@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-brand-tint text-ink border-t border-black/5 pt-16 pb-8 dark:bg-ink dark:text-white dark:border-none"
+      className="bg-brand-tint text-ink border-t border-black/5 pt-16 pb-8 dark:bg-[#111418] dark:text-white dark:border-white/5"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
