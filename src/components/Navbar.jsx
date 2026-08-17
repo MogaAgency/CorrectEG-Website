@@ -26,12 +26,12 @@ export default function Navbar() {
       }`}
     >
       <nav className="max-w-7xl mx-auto flex items-center justify-around px-4 sm:px-6 h-16">
-        <a href="#home" className="flex flex-nowrap items-center gap-2 font-heading font-bold text-xs md:text-lg text-ink dark:text-white">
+        <a href="#home" className="flex flex-nowrap items-center gap-2 font-heading font-bold text-xs md:text-md lg:text-md text-ink dark:text-white">
           <img src={logo} alt="" className="h-11 w-auto" />
-          {t.brand.part1} <span className="text-brand">{t.brand.part2}</span>
+          {t.brand.part1} <span className="hidden whitespace-nowrap text-brand xl:inline">{t.brand.part2}</span>
         </a>
 
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden lg:flex items-center gap-8">
           {t.nav.links.map((link) => (
             <li key={link.href}>
               <a
@@ -44,7 +44,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-2">
           <LanguageToggle />
           <ThemeToggle />
           <a
@@ -55,7 +55,7 @@ export default function Navbar() {
           </a>
         </div>
 
-        <div className="md:hidden flex items-center gap-1">
+        <div className="lg:hidden flex items-center gap-1">
           <LanguageToggle />
           <ThemeToggle />
           <button
@@ -71,7 +71,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <ul className="md:hidden flex flex-col gap-1 border-t border-black/5 bg-white px-4 py-3 dark:bg-[#0b0d10] dark:border-white/10">
+        <ul className="lg:hidden flex flex-col gap-1 border-t border-black/5 bg-white px-4 py-3 dark:bg-[#0b0d10] dark:border-white/10">
           {t.nav.links.map((link) => (
             <li key={link.href}>
               <a
