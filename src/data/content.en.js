@@ -18,7 +18,7 @@ export default {
       { label: 'Clients', href: '#clients' },
       { label: 'Contact', href: '#contact' },
     ],
-    cta: 'Schedule a Zoom Meeting',
+    cta: 'Get a Free Consultation',
   },
   hero: {
     title: 'Correct For Accounting Service',
@@ -313,7 +313,7 @@ export default {
   achievements: {
     title: 'Our Achievements',
     items: [
-      { value: 30, prefix: '+', suffix: '', label: 'Successful implementations' },
+      { value: 50, prefix: '', suffix: '+', label: 'Successful implementations' },
       { value: 10, prefix: '+', suffix: ' years', label: 'ERP Experience' },
       { value: 60, prefix: '+', suffix: '', label: 'Companies served' },
     ],

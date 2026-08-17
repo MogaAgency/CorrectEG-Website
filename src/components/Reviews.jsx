@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import cpLogo from '../assets/clients/cp.png'
-import novaLogo from '../assets/clients/nova.jpg'
+import novaLogo from '../assets/clients/nova-investment.jpeg'
 
 const SPACING = 68 // % of a card's own width each neighbor shifts by
 const SWIPE_THRESHOLD = 60 // px of drag before a swipe counts as prev/next

@@ -7,7 +7,7 @@ const CARD_GAP_PX = 20 // matches the track's gap-5
 const SET_REPEATS = 3 // logos rendered 3x so the track can wrap seamlessly in either direction
 const AUTOPLAY_MS = 3200
 
-const logoModules = import.meta.glob('../assets/clients/*.{jpg,png}', {
+const logoModules = import.meta.glob('../assets/clients/*.{jpg,jpeg,png}', {
   eager: true,
   import: 'default',
 })
