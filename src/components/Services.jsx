@@ -1,6 +1,7 @@
 import { Boxes, BookOpenCheck, SearchCheck, Receipt, LineChart, ArrowUpRight } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import ServicesTimeline from './ServicesTimeline'
+import { trackEvent } from '../lib/pixel'
 import './Services.css'
 
 const icons = {
@@ -37,6 +38,7 @@ export default function Services() {
             href="https://scheduler.zoom.us/correct-team/correct"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent('Schedule', { location: 'services_banner' })}
             className="services-banner__cta"
           >
             {t.services.banner.cta}

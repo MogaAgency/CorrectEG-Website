@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import ThemeToggle from './ThemeToggle'
 import LanguageToggle from './LanguageToggle'
+import { trackEvent } from '../lib/pixel'
 import logo from '../assets/logo.png'
 
 export default function Navbar() {
@@ -49,6 +50,7 @@ export default function Navbar() {
           <ThemeToggle />
           <a
             href="https://scheduler.zoom.us/correct-team/correct" target="_blank" rel="noopener noreferrer"
+            onClick={() => trackEvent('Schedule', { location: 'navbar' })}
             className="inline-flex items-center rounded-full bg-brand px-5 py-2 text-xs font-semibold text-white hover:bg-brand-dark transition-colors"
           >
             {t.nav.cta}

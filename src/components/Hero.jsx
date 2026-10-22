@@ -8,6 +8,7 @@ import employee3 from '../assets/hero-section-images/employees/e3.jpeg'
 import { useLanguage } from '../i18n/LanguageContext'
 import ParticleBackground from './ParticleBackground'
 import DownloadProfileButton from './DownloadProfileButton'
+import { trackEvent } from '../lib/pixel'
 
 const employeeAvatars = [employee1, employee2, employee3]
 
@@ -70,6 +71,7 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               href="https://scheduler.zoom.us/correct-team/correct" target="_blank" rel="noopener noreferrer"
+              onClick={() => trackEvent('Schedule', { location: 'hero' })}
               className="inline-flex items-center rounded-full bg-brand px-7 py-3 text-base font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors"
             >
               {t.hero.cta}

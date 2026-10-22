@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import SocialIcon from './SocialIcon'
 import { whatsappNumber } from '../data/shared'
 import { useLanguage } from '../i18n/LanguageContext'
+import { trackEvent } from '../lib/pixel'
 
 export default function WhatsAppButton() {
   const [visible, setVisible] = useState(false)
@@ -26,6 +27,7 @@ export default function WhatsAppButton() {
           href={`https://wa.me/${whatsappNumber}`}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackEvent('Contact', { location: 'whatsapp_button' })}
           aria-label={t.whatsapp.ariaLabel}
           className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-brand text-white shadow-lg hover:bg-brand-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
         >
